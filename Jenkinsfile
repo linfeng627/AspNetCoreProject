@@ -11,7 +11,7 @@ pipeline {
     }
     triggers {
         cron('H/5 * * * 1-5')
-        pollSCM('H/5 * 0 0 1-5')
+        pollSCM('H/5 * * * 1-5')
         upstream(upstreamProjects:'job1,job2',threshold:hudson.model.Result.SUCCESS)
     }
 
