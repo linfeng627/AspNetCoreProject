@@ -9,9 +9,11 @@ pipeline {
         string(name: 'Greeting', defaultValue: 'Hello', description: 'How should I greet the world?')
         booleanParam(name: 'DEBUG_BUILD', defaultValue: true, description: 'aaaaaaaaaa description')
     }
-    triggers {cron('H/5 * * * 1-5')}
-    triggers {pollSCM('H/5 * 0 0 1-5')}
-    triggers {upstream(upstreamProjects:'job1,job2',threshold:hudson.model.Result.SUCCESS)}
+    triggers {
+        cron('H/5 * * * 1-5')
+        pollSCM('H/5 * 0 0 1-5')
+        upstream(upstreamProjects:'job1,job2',threshold:hudson.model.Result.SUCCESS)
+    }
 
     options{
         timeout(time:10,unit:'SECONDS')
