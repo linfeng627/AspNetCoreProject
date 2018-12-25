@@ -1,0 +1,4 @@
+
+ls
+
+dotnet.exe msbuild

@@ -119,17 +119,18 @@ pipeline {
             //     //recipientProviders: [[$class: 'DevelopersRecipientProvider']]
             //     )
             emailext (
-    subject: "STARTED: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]'",
-    body: """<p>STARTED: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]':</p>
-        <p>Check console output at <a href='${env.BUILD_URL}/console'>${env.JOB_NAME} [${env.BUILD_NUMBER}]</a></p>""",
-    to: "linfeng627@126.com",
-    recipientProviders: [[$class: 'DevelopersRecipientProvider']]
-)
+                subject: "STARTED: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]'",
+                body: """<p>STARTED: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]':</p>
+                    <p>Check console output at <a href='${env.BUILD_URL}/console'>${env.JOB_NAME} [${env.BUILD_NUMBER}]</a></p>""",
+                to: "linfeng627@126.com",
+                recipientProviders: [[$class: 'DevelopersRecipientProvider']]
+            )
         }
         success{
             //
             echo "success..."
             //mail bcc: '', body: 'asdfffffffffffff.....success.......', cc: '', from: 'cchq.bi01@cimc.com', replyTo: '', subject: 'Jenkins Email', to: 'linfeng627@126.com'
+            emailext body: 'asdfasssssssss', recipientProviders: [upstreamDevelopers(), developers(), culprits(), requestor(), brokenTestsSuspects(), brokenBuildSuspects()], subject: 'test email', to: 'linfeng627@126.com,barryopenrice@gmail.com'
         }
         failure {
             echo "failure..."
